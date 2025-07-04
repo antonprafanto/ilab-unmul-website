@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Laboratory - Universitas Mulawarman</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c5530;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ffc107;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .navbar {
+            background: var(--primary-color) !important;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #4a7c59);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stats-section {
+            background: var(--secondary-color);
+            padding: 80px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .equipment-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .equipment-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-color);
+        }
+
+        .equipment-info {
+            padding: 1.5rem;
+        }
+
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h5 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .process-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="images/logo/unmul-logo.png" alt="UNMUL Logo">
+                <strong>ILab UNMUL</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Layanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#equipment">Fasilitas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#process">Proses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">Berita</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary ms-2" href="#reservation">Reservasi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content" data-aos="fade-up">
+                        <h1 class="hero-title">Integrated Laboratory</h1>
+                        <p class="hero-subtitle">Pusat Unggulan Penelitian dan Pengujian Universitas Mulawarman</p>
+                        <p class="lead mb-4">Mendukung inovasi berkelanjutan untuk pembangunan Ibu Kota Negara (IKN) melalui penelitian dan pengembangan teknologi terdepan.</p>
+                        <div class="hero-buttons">
+                            <a href="#services" class="btn btn-primary btn-lg me-3">Layanan Kami</a>
+                            <a href="#reservation" class="btn btn-outline-light btn-lg">Reservasi Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="hero-image">
+                        <i class="fas fa-flask" style="font-size: 15rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Tentang ILab UNMUL</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <p class="lead">Integrated Laboratory (ILab) UNMUL didirikan sebagai pusat penelitian dan pengujian terkemuka di Kalimantan Timur untuk mendukung pembangunan berkelanjutan IKN.</p>
+                    <p>Dengan menggabungkan sumber daya laboratorium dari berbagai fakultas, ILab UNMUL menyediakan fasilitas penelitian yang lengkap dan modern untuk mendukung inovasi di bidang sains, teknologi, kesehatan, dan lingkungan.</p>
+                    <div class="mt-4">
+                        <h5><i class="fas fa-bullseye me-2"></i>Visi</h5>
+                        <p>Menjadi pusat penelitian dan pengujian yang unggul di tingkat nasional dan internasional.</p>
+                        
+                        <h5><i class="fas fa-rocket me-2"></i>Misi</h5>
+                        <ul>
+                            <li>Meningkatkan efisiensi dan efektivitas penelitian</li>
+                            <li>Mendukung penelitian berkualitas tinggi dan pendidikan inovatif</li>
+                            <li>Memberikan layanan pengujian yang akurat dan terpercaya</li>
+                            <li>Mendorong kolaborasi lintas disiplin ilmu</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="building-image">
+                        <i class="fas fa-building" style="font-size: 20rem; color: var(--primary-color); opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Peralatan Canggih</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Fakultas Terlayani</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Penelitian Selesai</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Layanan Tersedia</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Layanan Kami</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h4>Penelitian & Pengujian</h4>
+                        <p>Layanan penelitian dan pengujian untuk berbagai bidang ilmu termasuk kimia, fisika, biologi, dan material sains dengan peralatan canggih.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Pelatihan & Magang</h4>
+                        <p>Program pelatihan teknis dan magang penelitian untuk mahasiswa, dosen, dan profesional dalam penggunaan peralatan laboratorium.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4>Kerja Praktik</h4>
+                        <p>Kesempatan kerja praktik bagi mahasiswa untuk mendapatkan pengalaman langsung dalam penelitian dan pengujian laboratorium.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Kalibrasi Instrumen</h4>
+                        <p>Layanan kalibrasi instrumen laboratorium terakreditasi KAN untuk memastikan akurasi dan keandalan hasil pengukuran.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4>Konsultasi Penelitian</h4>
+                        <p>Konsultasi metodologi penelitian dan bimbingan teknis untuk mendukung keberhasilan proyek penelitian Anda.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Analisis Data</h4>
+                        <p>Layanan analisis data dan interpretasi hasil penelitian dengan menggunakan software analisis terkini.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section id="equipment" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Fasilitas & Peralatan</h2>
+            <div class="equipment-grid">
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="equipment-image">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="equipment-info">
+                        <h5>GC-MS</h5>
+                        <p>Gas Chromatography-Mass Spectrometry untuk analisis senyawa organik dengan presisi tinggi.</p>
+                        <div class="equipment-specs">
+                            <small class="text-muted">Shimadzu GCMS-QP2010 Ultra</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="equipment-image">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <div class="equipment-info">
+                        <h5>LC-MS/MS</h5>
+                        <p>Liquid Chromatography-Mass Spectrometry untuk analisis farmasi dan biomolekul.</p>
+                        <div class="equipment-specs">
+                            <small class="text-muted">Waters Acquity UPLC</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="equipment-image">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <div class="equipment-info">
+                        <h5>FTIR Spectrophotometer</h5>
+                        <p>Spektrometer inframerah untuk analisis gugus fungsi dan identifikasi senyawa.</p>
+                        <div class="equipment-specs">
+                            <small class="text-muted">Shimadzu IRTracer-100</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="equipment-image">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div class="equipment-info">
+                        <h5>Freeze Dryer</h5>
+                        <p>Pengering beku untuk preparasi sampel dan preservasi material biologis.</p>
+                        <div class="equipment-specs">
+                            <small class="text-muted">Labconco FreeZone 2.5L</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="equipment-image">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <div class="equipment-info">
+                        <h5>Real-time PCR</h5>
+                        <p>Mesin PCR untuk amplifikasi dan deteksi DNA/RNA secara real-time.</p>
+                        <div class="equipment-specs">
+                            <small class="text-muted">Applied Biosystems QuantStudio 3</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="equipment-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="equipment-info">
+                        <h5>Laminar Air Flow</h5>
+                        <p>Kabinet biosafety untuk kultur sel dan manipulasi material steril.</p>
+                        <div class="equipment-specs">
+                            <small class="text-muted">Esco Airstream Class II BSC</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Proses Bisnis</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-step">
+                        <div class="process-number">1</div>
+                        <h5>Permohonan Penggunaan</h5>
+                        <p>Pengguna mengajukan permohonan penggunaan fasilitas laboratorium secara online atau offline dengan melengkapi persyaratan yang diperlukan.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-step">
+                        <div class="process-number">2</div>
+                        <h5>Verifikasi Permohonan</h5>
+                        <p>Tim petugas melakukan verifikasi kelengkapan dokumen dan persyaratan permohonan sesuai dengan SOP yang berlaku.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-step">
+                        <div class="process-number">3</div>
+                        <h5>Penjadwalan</h5>
+                        <p>Setelah permohonan disetujui, petugas melakukan penjadwalan penggunaan fasilitas berdasarkan ketersediaan dan prioritas.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="process-step">
+                        <div class="process-number">4</div>
+                        <h5>Persiapan Sampel</h5>
+                        <p>Pengguna menyiapkan sampel sesuai dengan persyaratan dan protokol laboratorium yang telah ditetapkan.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="process-step">
+                        <div class="process-number">5</div>
+                        <h5>Pengujian & Analisis</h5>
+                        <p>Petugas laboratorium melakukan pengujian dan analisis sampel menggunakan peralatan yang sesuai dengan standar mutu.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="process-step">
+                        <div class="process-number">6</div>
+                        <h5>Pelaporan Hasil</h5>
+                        <p>Hasil pengujian dan analisis dilaporkan kepada pengguna dalam bentuk laporan resmi yang telah diverifikasi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Berita & Kegiatan</h2>
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-card">
+                        <div class="news-image">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">30 Januari 2024</div>
+                            <h5>Workshop GC-MS dan LC-MS/MS</h5>
+                            <p>Workshop "Discover the Selectivity and Provided Analysis with GC-MS, LC-MS/MS, and AAS" untuk dosen dan laboran dari berbagai fakultas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-card">
+                        <div class="news-image">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">1 Februari 2024</div>
+                            <h5>Workshop Real-time PCR</h5>
+                            <p>Workshop "Real time PCR and It's Applications" untuk meningkatkan pemahaman teknik PCR dalam penelitian molekuler.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="news-card">
+                        <div class="news-image">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">16 Februari 2024</div>
+                            <h5>Workshop FTIR Spectrophotometer</h5>
+                            <p>Workshop "Spektrometer FTIR, Pengertian, Fungsi dan Prinsip Kerja" untuk memahami aplikasi spektroskopi inframerah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Kontak Kami</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="contact-info">
+                        <h4>Hubungi Kami</h4>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-map-marker-alt me-3"></i>
+                            <span>Jl. Kuaro, Gn. Kelua, Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur 75119</span>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-phone me-3"></i>
+                            <span>+62 541 735055</span>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-envelope me-3"></i>
+                            <span>ilab@unmul.ac.id</span>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-globe me-3"></i>
+                            <span>https://ilab.unmul.ac.id</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <form class="contact-form">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Subjek" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Pesan" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h5>Integrated Laboratory</h5>
+                    <p>Pusat unggulan penelitian dan pengujian Universitas Mulawarman yang mendukung inovasi berkelanjutan untuk pembangunan IKN.</p>
+                </div>
+                <div class="footer-section">
+                    <h5>Layanan</h5>
+                    <ul>
+                        <li><a href="#services">Penelitian & Pengujian</a></li>
+                        <li><a href="#services">Pelatihan & Magang</a></li>
+                        <li><a href="#services">Kerja Praktik</a></li>
+                        <li><a href="#services">Kalibrasi Instrumen</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>Tautan Cepat</h5>
+                    <ul>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#equipment">Fasilitas</a></li>
+                        <li><a href="#process">Proses Bisnis</a></li>
+                        <li><a href="#news">Berita</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h5>Kontak</h5>
+                    <ul>
+                        <li>Universitas Mulawarman</li>
+                        <li>Samarinda, Kalimantan Timur</li>
+                        <li>Phone: +62 541 735055</li>
+                        <li>Email: ilab@unmul.ac.id</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top">
+                <p>&copy; 2024 Integrated Laboratory - Universitas Mulawarman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Counter Animation
+        function animateCounter() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        setTimeout(updateCounter, 50);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('#stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(statsSection);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(44, 85, 48, 0.95)';
+            } else {
+                navbar.style.background = 'var(--primary-color)';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,20 +1,20 @@
-# 🧪 ILab UNMUL - Integrated Laboratory Website
+# ?? ILab UNMUL - Integrated Laboratory Website
 
 Sistem website resmi Integrated Laboratory Universitas Mulawarman untuk manajemen laboratorium dan reservasi equipment.
 
-## 🎯 Fitur Utama
+## ?? Fitur Utama
 
-- ✅ **Homepage Responsif** dengan informasi lengkap ILab
-- ✅ **Sistem Authentication** (Login/Register/Password Reset)
-- ✅ **Equipment Reservation System** dengan approval workflow
-- ✅ **Admin Dashboard** untuk manajemen lengkap
-- ✅ **User Dashboard** untuk mahasiswa dan peneliti
-- ✅ **News Management** untuk publikasi kegiatan
-- ✅ **Contact System** terintegrasi email
-- ✅ **SOP Document Management**
-- ✅ **Responsive Design** untuk semua device
+- ? **Homepage Responsif** dengan informasi lengkap ILab
+- ? **Sistem Authentication** (Login/Register/Password Reset)
+- ? **Equipment Reservation System** dengan approval workflow
+- ? **Admin Dashboard** untuk manajemen lengkap
+- ? **User Dashboard** untuk mahasiswa dan peneliti
+- ? **News Management** untuk publikasi kegiatan
+- ? **Contact System** terintegrasi email
+- ? **SOP Document Management**
+- ? **Responsive Design** untuk semua device
 
-## 🛠️ Teknologi
+## ??? Teknologi
 
 **Frontend:**
 - HTML5, CSS3, JavaScript ES6+
@@ -28,7 +28,7 @@ Sistem website resmi Integrated Laboratory Universitas Mulawarman untuk manajeme
 - PDO untuk database operations
 - RESTful API architecture
 
-## 📦 Instalasi Lokal
+## ?? Instalasi Lokal
 
 ### Prerequisites
 - XAMPP (Apache + MySQL + PHP)
@@ -57,7 +57,7 @@ Sistem website resmi Integrated Laboratory Universitas Mulawarman untuk manajeme
    - Login: `http://localhost/ilab-unmul-website/login.php`
    - Admin: `http://localhost/ilab-unmul-website/admin/dashboard.php`
 
-## 🚀 Deployment
+## ?? Deployment
 
 ### Server Requirements
 - PHP 8.0+
@@ -66,7 +66,7 @@ Sistem website resmi Integrated Laboratory Universitas Mulawarman untuk manajeme
 - SSL Certificate
 - SFTP Access
 
-## 📊 Database Schema
+## ?? Database Schema
 
 ### Main Tables:
 - `users` - User management dan authentication
@@ -76,7 +76,7 @@ Sistem website resmi Integrated Laboratory Universitas Mulawarman untuk manajeme
 - `contact_messages` - Pesan dari contact form
 - `sop_documents` - Dokumen SOP dan prosedur
 
-## 🔐 Security Features
+## ?? Security Features
 
 - Password hashing dengan bcrypt
 - SQL injection protection dengan PDO
@@ -84,7 +84,7 @@ Sistem website resmi Integrated Laboratory Universitas Mulawarman untuk manajeme
 - File upload validation
 - Session security
 
-## 📱 User Roles
+## ?? User Roles
 
 **Admin:**
 - Dashboard dengan statistik lengkap
@@ -99,24 +99,24 @@ Sistem website resmi Integrated Laboratory Universitas Mulawarman untuk manajeme
 - Profile management
 - Dashboard personal
 
-## 🎨 Design System
+## ?? Design System
 
 **Color Palette:**
 - Primary: `#2c5530` (UNMUL Green)
 - Secondary: `#f8f9fa` (Light Gray)
 - Accent: `#ffc107` (Golden Yellow)
 
-## 📞 Support
+## ?? Support
 
 **Technical Issues:**
 - Email: admin@ilab.unmul.ac.id
 - Phone: +62 541 735055
 
-## 📄 License
+## ?? License
 
 This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
+## ?? Acknowledgments
 
 - Universitas Mulawarman
 - UPT Teknologi Informasi dan Komunikasi UNMUL
@@ -124,4 +124,4 @@ This project is licensed under the MIT License.
 
 ---
 
-**© 2024 Integrated Laboratory - Universitas Mulawarman**
+**� 2024 Integrated Laboratory - Universitas Mulawarman**
